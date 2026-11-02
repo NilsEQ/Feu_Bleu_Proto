@@ -87,7 +87,11 @@ public class WatchInteraction : MonoBehaviour
 
             foreach (GameObject Screen in Screens)
             {
-                Screen.SetActive(false);
+                if (Screen.name != "QuitAnyTime")
+                {
+                    Screen.SetActive(false);
+                }
+
             }
 
             GUI.SetActive(false);
@@ -121,7 +125,10 @@ public class WatchInteraction : MonoBehaviour
 
         foreach (GameObject Screen in Screens)
         {
-            Screen.SetActive(false);
+            if (Screen.name != "QuitAnyTime")
+            {
+                Screen.SetActive(false);
+            }
         }
 
         GUI.SetActive(false);
@@ -136,7 +143,10 @@ public class WatchInteraction : MonoBehaviour
 
         foreach (GameObject Screen in Screens)
         {
-            Screen.SetActive(false);
+            if (Screen.name != "QuitAnyTime")
+            {
+                Screen.SetActive(false);
+            }
         }
 
         GUI.SetActive(false);

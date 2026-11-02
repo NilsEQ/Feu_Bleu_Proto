@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+
 public class StoryProgression : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -177,10 +179,10 @@ public class StoryProgression : MonoBehaviour
         {
 
             Debug.Log("MOMENT 6 IS HERE BABY");
-
-            paper.transform.position = myCabin.transform.position + new Vector3(0.4f, 0.05f, -0.4f);
-            paper.SetActive(true);
             Beatrix.Moment5();
+
+            StartCoroutine(WaitPaper());
+
 
         }
 
@@ -204,4 +206,12 @@ public class StoryProgression : MonoBehaviour
         WatchScript.ChangeSettings(newGUI);
     }
 
+
+    private IEnumerator WaitPaper()
+    {
+        yield return new WaitForSeconds(2);
+        paper.transform.position = myCabin.transform.position + new Vector3(0.4f, 0.05f, -0.4f);
+        paper.SetActive(true);
+
+    }
 }

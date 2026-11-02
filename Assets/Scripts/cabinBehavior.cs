@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class cabinBehavior : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class cabinBehavior : MonoBehaviour
 
     private Animator myAnimator;
 
+    public AudioSource Lock;
 
     public void Start()
     {
@@ -49,8 +51,15 @@ public class cabinBehavior : MonoBehaviour
     {
         State = CabinState.Playing;
         myAnimator.Play("CabinClose");
-
+        StartCoroutine(LockSound());
 
     }
+
+    private IEnumerator LockSound()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Lock.Play();
+    }
+
 
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class WatchInteraction : MonoBehaviour
 {
 
-    private bool active = false;
+    public bool active = false;
 
     public GameObject GUI;
     public GameObject StartPage;
@@ -29,6 +29,7 @@ public class WatchInteraction : MonoBehaviour
     void Start()
     {
 
+        active = false;
 
         Player_Transform = Player.GetComponent<Transform>();
 

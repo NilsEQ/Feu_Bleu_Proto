@@ -1,0 +1,21 @@
+{
+  "passed": [
+    "Play mode is advancing",
+    "Received NetSync packet drives ghost head and hand: (2.00, 1.60, 3.00), (1.65, 1.25, 3.10)",
+    "Remote body and hands are visible",
+    "Hand tracking loss fades gradually",
+    "Tracking loss hides only the affected hand",
+    "Recovered tracking restores the hand",
+    "Stationary people remain visible",
+    "Inactive head anchor dissolves the ghost",
+    "Distant ghost has translucent pixel coverage",
+    "Nearby ghost is visibly stronger than distant ghost",
+    "MR render preserves transparent background without opaque ghost pixels",
+    "NetSync spawns the physical-presence prefab",
+    "Presence follows the physical HMD pose and yaw",
+    "Presence is not spawned for the local user",
+    "Presence is removed on disconnect"
+  ],
+  "frame": 6950,
+  "note": "Injected NetSync packets and physical-presence lifecycle; no live network or HMD test."
+}

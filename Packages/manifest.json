@@ -48,7 +48,8 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-    "com.unity.pipeline": "0.9.1-exp.1"
+    "com.unity.pipeline": "0.9.1-exp.1",
+    "io.github.hatayama.uloopmcp": "3.21.3"
   },
   "scopedRegistries": [
     {
@@ -59,6 +60,7 @@
         "com.styly.shader-collection.urp",
         "com.styly.styly-netsync",
         "com.styly.styly-xr-rig",
+        "io.github.hatayama.uloopmcp",
         "org.nuget.asyncio",
         "org.nuget.nacl.net",
         "org.nuget.netmq",

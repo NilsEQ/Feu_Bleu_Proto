@@ -138,3 +138,7 @@ crashlytics-build.properties
 
 # Ignore .vscode folder
 .vscode/
+
+# Unity CLI Loop generated command cache and runtime output
+/.uloop/tools.json
+/.uloop/outputs/

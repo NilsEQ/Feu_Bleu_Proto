@@ -1,0 +1,4 @@
+{
+  "name": "FeuBleu.Hivebet",
+  "references": ["Unity.TextMeshPro", "Unity.ugui"]
+}

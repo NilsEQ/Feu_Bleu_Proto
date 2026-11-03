@@ -1,0 +1,25 @@
+{
+  "passed": [
+    "C# compilation succeeds",
+    "Ghost shader supported and error-free",
+    "Assets/Avatars/GhostAvatar/Prefabs/GhostAvatar_Remote.prefab exists",
+    "GhostAvatar_Remote has no missing scripts",
+    "GhostAvatar_Remote is visual only",
+    "GhostAvatar_Remote has no distracting particles",
+    "GhostAvatar_Remote uses ghost materials",
+    "Assets/Avatars/GhostAvatar/Prefabs/GhostAvatar_Presence.prefab exists",
+    "GhostAvatar_Presence has no missing scripts",
+    "GhostAvatar_Presence is visual only",
+    "GhostAvatar_Presence has no distracting particles",
+    "GhostAvatar_Presence uses ghost materials",
+    "Remote retains NetSync rig and tracking fades",
+    "Remote tracking references are intact",
+    "Skinning bones are intact",
+    "Presence does not fight the physical-position driver",
+    "Presence mesh is centred at HMD height",
+    "Lower body dissolves to transparent",
+    "Physical presence remains visible through virtual scenery"
+  ],
+  "unity": "6000.3.19f1",
+  "graphics": "Metal"
+}

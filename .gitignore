@@ -135,3 +135,13 @@ crashlytics-build.properties
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Ignore .vscode folder
+.vscode/
+
+# Unity CLI Loop generated command cache and runtime output
+/.uloop/tools.json
+/.uloop/outputs/
+
+# macOS
+.DS_Store

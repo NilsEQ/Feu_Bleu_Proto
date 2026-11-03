@@ -38,6 +38,7 @@ MonoBehaviour:
     - com.styly.shader-collection.urp
     - com.styly.styly-netsync
     - com.styly.styly-xr-rig
+    - io.github.hatayama.uloopmcp
     - org.nuget.asyncio
     - org.nuget.nacl.net
     - org.nuget.netmq
@@ -58,6 +59,6 @@ MonoBehaviour:
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -920
-    m_OriginalInstanceId: -922
+    m_UserModificationsInstanceId: -900
+    m_OriginalInstanceId: -904
   m_LoadAssets: 0

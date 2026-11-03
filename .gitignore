@@ -145,3 +145,7 @@ crashlytics-build.properties
 
 # macOS
 .DS_Store
+
+# Local voting credential. Never commit API keys or bundle the admin key.
+/Assets/Resources/HivebetLocalConfig.json
+/Assets/Resources/HivebetLocalConfig.json.meta

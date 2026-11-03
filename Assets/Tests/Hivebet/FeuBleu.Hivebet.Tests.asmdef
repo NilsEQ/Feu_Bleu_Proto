@@ -1,0 +1,5 @@
+{
+  "name": "FeuBleu.Hivebet.Tests",
+  "references": ["FeuBleu.Hivebet", "Unity.TextMeshPro", "Unity.ugui"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}

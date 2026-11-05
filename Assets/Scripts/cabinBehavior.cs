@@ -22,6 +22,18 @@ public class cabinBehavior : MonoBehaviour
 
     public AudioSource Lock;
 
+    public AudioSource SlamSound;
+
+
+    public cabinBehavior nextCabin;
+
+
+    public GraffitiLight Graf1;
+    public GraffitiLight Graf2;
+    public GraffitiLight Graf3;
+
+    public GameObject warning;
+
     public void Start()
     {
 
@@ -52,6 +64,36 @@ public class cabinBehavior : MonoBehaviour
         State = CabinState.Playing;
         myAnimator.Play("CabinClose");
         StartCoroutine(LockSound());
+        StartCoroutine(Warning());
+
+
+    }
+    private IEnumerator Warning()
+    {
+        yield return new WaitForSeconds(2f);
+        warning.SetActive(false);
+    }
+
+    public void Done()
+    {
+        warning.SetActive(false);
+        State = CabinState.Free;
+        Lock.Play();
+        myAnimator.Play("CabinOpen");
+    }
+
+
+    public void nextOne()
+    {
+        myAnimator.Play("CabinClose");
+        StartCoroutine(LockSound());
+    }
+
+
+    public void nextOneOpen()
+    {
+        Lock.Play();
+        myAnimator.Play("CabinOpen");
 
     }
 
@@ -61,5 +103,14 @@ public class cabinBehavior : MonoBehaviour
         Lock.Play();
     }
 
+    public void Slam()
+    {
+        myAnimator.Play("Secousse");
+        SlamSound.Play();
 
+        Graf1.EnableEmission();
+        Graf2.EnableEmission();
+        Graf3.EnableEmission();
+
+    }
 }

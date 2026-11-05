@@ -9,6 +9,7 @@ public class LockJaw : MonoBehaviour
     {
         jaw = GetComponent<Transform>();
         originalPosition = jaw.localPosition;
+        originalPosition = new Vector3(-0.024f, originalPosition.y, originalPosition.z);
     }
 
     void LateUpdate()

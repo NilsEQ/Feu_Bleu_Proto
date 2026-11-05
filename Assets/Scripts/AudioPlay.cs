@@ -15,6 +15,7 @@ public class AudioPlay : MonoBehaviour
     {
         Debug.Log(this.gameObject.name + " is Starting");
         audioSource.PlayOneShot(audioSource.clip);
+
         MouthController.LetsTalk();
         StartCoroutine(WaitForAudio());
 

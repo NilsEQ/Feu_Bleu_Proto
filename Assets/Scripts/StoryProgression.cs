@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -15,6 +16,9 @@ public class StoryProgression : MonoBehaviour
     public WatchInteraction WatchScript;
 
     public GameObject player;
+
+
+    public GameObject BeatrixObj;
 
     public BeatrixBehavior Beatrix;
 
@@ -49,13 +53,16 @@ public class StoryProgression : MonoBehaviour
 
 
     public GameObject myCabin;
+    public cabinBehavior CabinBeh;
+
+    public cabinBehavior NextCabin;
 
 
 
     // Moment 4
     [Header("Moment 4")]
 
-    public PlayableDirector director;
+    public PlayableDirector CliqueDirector;
 
 
     // Moment 5
@@ -63,11 +70,41 @@ public class StoryProgression : MonoBehaviour
 
     public GameObject GUI_warning;
 
-    [Header("Moment X")]
+    [Header("Moment 6")]
 
     public GameObject paper;
 
-    public 
+    public float PaperTime = 30.0F;
+
+    public AdvanceWhenCloseOnce PleaseClose;
+
+
+[Header("Moment 7")]
+
+    public GameObject Clique;
+
+    public GameObject Fight;
+
+    public PlayableDirector FightDirector;
+
+
+    [Header("Moment 9")]
+
+    public GameObject BeatrixFight;
+
+    [Header("Moment 10")]
+
+    public GameObject GUI_Final;
+
+
+    [Header("Moment 11")]
+
+    public PlayableDirector EndingDirector;
+
+    public AudioPlay BeaLastWords;
+
+
+
 
 
     void Start()
@@ -122,13 +159,16 @@ public class StoryProgression : MonoBehaviour
 
         if (current_Moment == 3)
         {
-
-
+            CabinBeh = myCabin.GetComponent<cabinBehavior>();
+            NextCabin = CabinBeh.nextCabin;
 
             Debug.Log("MOMENT 3 IS HERE BABY");
 
             Beatrix.StillWaiting = false;
             Beatrix.Target = myCabin.transform.position + new Vector3(0.5f,0, 1.25577f/2f);
+
+            StartCoroutine(Moment3Coroutine());
+
             Beatrix.Moment3();
 
             Chatter.SetActive(false);
@@ -157,7 +197,7 @@ public class StoryProgression : MonoBehaviour
         if (current_Moment == 4)
         {
 
-            director.Play();
+            CliqueDirector.Play();
             //director.playableGraph.GetRootPlayable(0).SetSpeed(10f);
 
         }
@@ -172,6 +212,8 @@ public class StoryProgression : MonoBehaviour
             UpdateWatch(GUI_warning);
             WatchScript.alarm();
 
+            StartCoroutine(Moment5Coroutine());
+
         }
 
 
@@ -182,6 +224,7 @@ public class StoryProgression : MonoBehaviour
             Beatrix.Moment5();
 
             StartCoroutine(WaitPaper());
+            StartCoroutine(WaitForNext());
 
 
         }
@@ -191,10 +234,52 @@ public class StoryProgression : MonoBehaviour
         {
 
             Debug.Log("MOMENT 7 IS HERE BABY");
+            Clique.SetActive(false);
+            BeatrixObj.SetActive(false);
+            Fight.SetActive(true);
 
+            Fight.transform.position = myCabin.transform.position + new Vector3(-1F, 0, -0.5f);
+
+            FightDirector.Play();
+        }
+
+
+        if (current_Moment == 8)
+        {
+            Beatrix.transform.position = BeatrixFight.transform.position;
+            BeatrixObj.SetActive(true);
+            Fight.SetActive(false);
+
+            Beatrix.Moment8();
 
         }
 
+
+        if (current_Moment == 9)
+        {
+            CabinBeh.Done();
+
+            Beatrix.Moment9();
+
+        }
+
+
+
+        if (current_Moment == 10)
+        {
+
+            UpdateWatch(GUI_Final);
+            WatchScript.alarm();
+            StartCoroutine(Moment10Coroutine());
+
+        }
+
+        if (current_Moment == 11)
+        {
+
+            EndingDirector.Play();
+            BeaLastWords.StopSound();
+        }
 
     }
 
@@ -207,6 +292,38 @@ public class StoryProgression : MonoBehaviour
     }
 
 
+    private IEnumerator Moment3Coroutine()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        NextCabin.nextOne();
+
+    }
+
+    private IEnumerator Moment5Coroutine()
+    {
+
+        Debug.Log("Coroutine Start");
+        yield return new WaitForSeconds(90f);
+
+        if (!PleaseClose.Once)
+        {
+            PleaseClose.Once = true;
+            WatchScript.deactivate();
+            Advance();
+        }
+
+    }
+
+    private IEnumerator Moment10Coroutine()
+    {
+
+        yield return new WaitForSeconds(90f);
+        WatchScript.deactivate();
+        Advance();
+
+    }
+
     private IEnumerator WaitPaper()
     {
         yield return new WaitForSeconds(2);
@@ -214,4 +331,24 @@ public class StoryProgression : MonoBehaviour
         paper.SetActive(true);
 
     }
+
+
+    private IEnumerator WaitForNext()
+    {
+        yield return new WaitForSeconds(PaperTime);
+        Advance();
+
+    }
+
+    public void Crash()
+    {
+        CabinBeh.Slam();
+    }
+
+
+    public void OpenNextCabin()
+    {
+        NextCabin.nextOneOpen();
+    }
+
 }

@@ -41,6 +41,18 @@ public class BeatrixBehavior : MonoBehaviour
     [Header("Moment 5")]
     public AudioPlay Sound4;
 
+    [Header("Moment 8")]
+    public NextMomentOnFinish Sound5;
+
+    [Header("Moment 9")]
+    public NextMomentOnFinish Sound6;
+
+
+    [Header("Moment 10")]
+    public AudioPlay Sound7;
+
+
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -97,20 +109,59 @@ public class BeatrixBehavior : MonoBehaviour
     public void Moment3()
     {
         Target = new Vector3(Target.x, transform.position.y, Target.z);
-        transform.position = Target;
 
         Sound2.StopSound();
+        WatchHim.todo = false;
+        HeadLocker.todo = false;
+
+        StartCoroutine(Mom3Cor());
+
+
+
+    }
+
+    private IEnumerator Mom3Cor()
+    {
+
+
+        yield return new WaitForSeconds(3f);
+        transform.position = Target;
         Sound3Bis.PlaySound();
 
 
-        WatchHim.todo = false;
-        HeadLocker.todo = false;
+
     }
 
     public void Moment5()
     {
         Sound4.PlaySound();
     }
+
+    public void Moment8()
+    {
+        WatchHim.todo = true;
+        HeadLocker.todo = true;
+        Sound5.PlaySound();
+    }
+
+    public void Moment9()
+    {
+        StartCoroutine(Mom9Cor());
+    }
+
+    private IEnumerator Mom9Cor()
+    {
+
+        yield return new WaitForSeconds(3f);
+        Sound6.PlaySound();
+    }
+
+    public void Moment10()
+    {
+        Sound7.PlaySound();
+    }
+
+
 
 
 }

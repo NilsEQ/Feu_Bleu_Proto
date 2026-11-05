@@ -134,8 +134,10 @@ public class WatchInteraction : MonoBehaviour
 
         GUI.SetActive(false);
         watchLight.Play("Idle");
+        Buzz.SetActive(false);
 
-        ;
+
+        
     }
 
     public void alarm()

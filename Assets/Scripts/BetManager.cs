@@ -66,6 +66,8 @@ public class BetManager : MonoBehaviour
 
     public void makeAChoice(Button myChoice)
     {
+        Debug.Log("PlaceBet interactable: " + PlaceBet.interactable);
+
         choice = myDico[myChoice];
         foreach (Button button in Choices)
         {
@@ -74,6 +76,9 @@ public class BetManager : MonoBehaviour
         }
 
         PlaceBet.interactable = true;
+
+        Debug.Log("PlaceBet interactable: " + PlaceBet.interactable);
+
     }
 
     public void BetPlaced()

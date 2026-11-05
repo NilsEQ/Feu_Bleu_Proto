@@ -36,22 +36,25 @@ The `HivebetApi` scene component contains the public endpoint, refresh interval
 and timeout. Routing uses `?path=`, and both HTTP errors and the Apps Script JSON
 `ok/status/error` envelope are checked.
 
-The voting credential is not serialized into the scene or committed to Git.
-Create this ignored file before running/building on another machine:
+The shared prototype voting credential is committed to Git in:
 
 `Assets/Resources/HivebetLocalConfig.json`
 
-```json
-{"voteApiKey":"COPY_THE_EXISTING_VOTE_API_KEY_HERE"}
-```
+Pulling the repository supplies this file and its Unity-generated `.meta` file;
+no manual key setup is needed. Unity loads its `voteApiKey` field through
+Resources and includes it in player builds. Restart Play Mode after pulling,
+or rebuild and reinstall an existing player to include the updated file.
 
-Only use the existing `VOTE_API_KEY` from Apps Script project properties. Never
-place `ADMIN_API_KEY` in Unity. The local development machine is configured.
-The Resources file is included in local builds; it is a shared prototype
-credential and can be extracted from a client build. Keep those builds within
-the intended prototype audience. An optional `HivebetLocalConfig.json` in
-`Application.persistentDataPath` overrides the bundled credential. Without a
-credential the public chart still works and submission is disabled.
+The value is the existing `VOTE_API_KEY` from Apps Script project properties.
+Never place `ADMIN_API_KEY` in Unity. This is an intentionally shared prototype
+credential. On 2026-11-05, the bundled key passed voting authentication and was
+rejected by the admin-only vote lookup route; neither check recorded a vote.
+
+An optional `HivebetLocalConfig.json` in `Application.persistentDataPath`
+overrides the bundled credential, including after an app update. If a device
+still reports `Invalid API key.`, update or remove that stale override so it
+uses the bundled key. Without a credential the public chart still works and
+submission is disabled.
 
 ## Seed data
 
